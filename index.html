@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Created with GameMaker</title>
+    <style>
+        body {
+            margin: 0;
+            background: #000;
+            color: #ccc;
+            text-align: center;
+            font-family: sans-serif;
+        }
+        .gm4html5_div_class {
+            margin: 10px auto 0;
+            width: 640px;
+            height: 480px;
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: black;
+            border: 0;
+        }
+        button {
+            margin: 10px auto;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gm4html5_div_class" id="gm4html5_div_id">
+        <canvas id="canvas" width="640" height="480">
+            Your browser doesn't support HTML5 canvas.
+        </canvas>
+    </div>
+
+    <button id="fullscreenBtn">Go Fullscreen</button>
+
+    <script src="html5game/NXTALE.js?cachebust=1742999437"></script>
+    <script>
+        window.onload = GameMaker_Init;
+
+        const btn = document.getElementById('fullscreenBtn');
+        const container = document.getElementById('gm4html5_div_id');
+
+        btn.onclick = () => {
+            if (!document.fullscreenElement) {
+                container.requestFullscreen();
+                btn.textContent = 'Exit Fullscreen';
+            } else {
+                document.exitFullscreen();
+                btn.textContent = 'Go Fullscreen';
+            }
+        };
+
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) {
+                btn.textContent = 'Go Fullscreen';
+            }
+        });
+    </script>
+</body>
+
+</html>
